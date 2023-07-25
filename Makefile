@@ -21,7 +21,7 @@ VER_HASH=$(shell git rev-parse --short HEAD || echo "unknown")
 all: ghdl.$(SOEXT)
 
 ghdl.$(SOEXT): ghdl.o
-	$(YOSYS_CONFIG) --build $@ $< -shared $(ALL_LDFLAGS)
+	$(YOSYS_CONFIG) --build $@ -shared $(ALL_LDFLAGS)
 
 ghdl.o: src/ghdl.cc
 	$(YOSYS_CONFIG) --exec --cxx -c --cxxflags -o $@ $< $(ALL_CFLAGS) -DGHDL_VER_HASH="\"$(VER_HASH)\""
